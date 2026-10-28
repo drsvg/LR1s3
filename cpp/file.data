@@ -1,8 +1,0 @@
-{
-    "myarray|array": "avocado,strawberry,",
-    "mylist|flist": "two,three,",
-    "mydlist|dlist": "c,d,",
-    "mystack|stack": "item0,item1,",
-    "myqueue|queue": "first,",
-    "mytree|tree": "60,40,20,50,70,80,"
-}
