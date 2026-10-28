@@ -24,7 +24,6 @@ vector<string> splitCSV(const string& csv, bool keepEmpty) {
     for (size_t i = 0; i < csv.length(); ++i) {
         char ch = csv[i];
         if (ch == ',') {
-            // Если элемент не пустой или мы сохраняем пустые (для дерева)
             if (!current.empty() || keepEmpty) {
                 result.push_back(current);
             }
@@ -34,12 +33,9 @@ vector<string> splitCSV(const string& csv, bool keepEmpty) {
         }
     }
     
-    // Обработка остатка строки после последней запятой
     if (!current.empty()) {
-        // Если остался какой-то текст (например, последний элемент), добавляем его
         result.push_back(current);
     } else if (keepEmpty && !csv.empty() && csv.back() != ',') {
-        // Если это дерево, строка не пустая, но не заканчивается на запятую (нестандартный случай)
         result.push_back(current);
     }
     
