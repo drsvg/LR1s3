@@ -19,7 +19,7 @@ void doublyClear(DoublyList& l) {
     l.size = 0;
 }
 
-// ================= ДОБАВЛЕНИЕ =================
+// ДОБАВЛЕНИЕ
 
 CommandResult doublyPushHead(DoublyList& l, const string& value) {
     DNode* node = new DNode{value, nullptr, l.head};
@@ -65,7 +65,7 @@ CommandResult doublyPushBefore(DoublyList& l, const string& value, const string&
     return makeOk(value);
 }
 
-// ================= УДАЛЕНИЕ =================
+//УДАЛЕНИЕ
 
 CommandResult doublyDelHead(DoublyList& l) {
     if (!l.head) return makeError("ERROR: list is empty");
