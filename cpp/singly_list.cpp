@@ -19,7 +19,7 @@ void singlyClear(SinglyList& l) {
     l.size = 0;
 }
 
-// ================= ДОБАВЛЕНИЕ =================
+// ДОБАВЛЕНИЕ 
 
 CommandResult singlyPushHead(SinglyList& l, const string& value) {
     SNode* node = new SNode{value, l.head};
@@ -63,7 +63,7 @@ CommandResult singlyPushBefore(SinglyList& l, const string& value, const string&
     return makeOk(value);
 }
 
-// ================= УДАЛЕНИЕ =================
+// УДАЛЕНИЕ
 
 CommandResult singlyDelHead(SinglyList& l) {
     if (!l.head) return makeError("ERROR: list is empty");
@@ -110,12 +110,9 @@ CommandResult singlyDelValue(SinglyList& l, const string& value) {
 
 CommandResult singlyDelNear(SinglyList& l, const string& target, bool isAfter) {
     if (!l.head) return makeError("ERROR: list is empty");
-    
-    // Если удаляем ПЕРЕД головой - это невозможно
     if (!isAfter && l.head->value == target) {
         return makeError("ERROR: nothing to delete before head");
     }
-    // Если удаляем ПОСЛЕ хвоста - невозможно
     if (isAfter && l.tail->value == target) {
         return makeError("ERROR: nothing to delete after tail");
     }
@@ -133,17 +130,14 @@ CommandResult singlyDelNear(SinglyList& l, const string& target, bool isAfter) {
         l.size--;
         return makeOk(v);
     } else {
-        // Удаляем перед target. Нам нужен узел, который стоит ПЕРЕД удаляемым.
         SNode* prev = l.head;
         while (prev && prev->next != cur) prev = prev->next;
         
-        SNode* del = cur; // Удаляем cur? Нет, мы удаляем того, кто перед target.
-        // Удаляем prev
+        SNode* del = cur; 
         if (prev == l.head) {
             return singlyDelHead(l);
         }
         
-        // Ищем узел перед prev
         SNode* prevPrev = l.head;
         while (prevPrev && prevPrev->next != prev) prevPrev = prevPrev->next;
         
