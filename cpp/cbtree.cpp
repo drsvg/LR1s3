@@ -20,7 +20,6 @@ void treeClear(CBTree& t) {
     t.size = 0;
 }
 
-// Вставка в первую свободную позицию по BFS (complete-вставка)
 CommandResult treeInsert(CBTree& t, int value) {
     TNode* node = new TNode;
     node->value = value;
@@ -33,7 +32,6 @@ CommandResult treeInsert(CBTree& t, int value) {
         return makeOk(to_string(value));
     }
 
-    // BFS: ищем первый узел, у которого нет левого или правого ребёнка
     queue<TNode*> q;
     q.push(t.root);
     while (!q.empty()) {
@@ -66,7 +64,6 @@ CommandResult treeGet(const CBTree& t, int value) {
     return makeOk(findNode(t.root, value) ? "TRUE" : "FALSE");
 }
 
-// Проверка на Complete Binary Tree
 static bool isComplete(TNode* root, int index, int total) {
     if (!root) return true;
     if (index >= total) return false;
